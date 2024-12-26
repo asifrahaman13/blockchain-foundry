@@ -2,8 +2,7 @@
 pragma solidity ^0.8.26;
 
 contract ManualToken {
-
-    mapping(address=>uint256) private s_balance;
+    mapping(address => uint256) private s_balance;
 
     function name() public pure returns (string memory) {
         return "Asif-token";
@@ -22,9 +21,9 @@ contract ManualToken {
     }
 
     function transfer(address _to, uint256 _amount) public {
-        uint256 previousBalance= balanceOf(msg.sender)+balanceOf(_to);
-        s_balance[msg.sender]-=_amount;
-        s_balance[_to]+=_amount;
-        require(balanceOf(msg.sender)+balanceOf(_to)==previousBalance);
+        uint256 previousBalance = balanceOf(msg.sender) + balanceOf(_to);
+        s_balance[msg.sender] -= _amount;
+        s_balance[_to] += _amount;
+        require(balanceOf(msg.sender) + balanceOf(_to) == previousBalance);
     }
 }
